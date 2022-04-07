@@ -30,7 +30,7 @@ namespace Sudoku.Shared
         protected static void InstallPythonComponents()
         {
             
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 InstallMac();
             }
@@ -42,7 +42,7 @@ namespace Sudoku.Shared
 
         protected void InstallPipModule(string moduleName)
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 MacInstaller.PipInstallModule(moduleName);
             }

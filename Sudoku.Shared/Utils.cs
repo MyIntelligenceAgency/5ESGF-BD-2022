@@ -1,11 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 
 namespace Sudoku.Shared
 {
     public static class Utils
     {
+
+        private const string PUZZLES_FOLDER_NAME = "Puzzles";
+
+        public static void PrepareSudokus()
+        {
+            var filePath = Path.Combine(Environment.CurrentDirectory, "sudoku.csv");
+            if (!File.Exists(filePath))
+            {
+
+
+                DirectoryInfo puzzlesDirectory = null;
+                var currentDirectory = new DirectoryInfo(Environment.CurrentDirectory);
+                do
+                {
+                    var subDirectories = currentDirectory.GetDirectories();
+                    foreach (var subDirectory in subDirectories)
+                    {
+                        if (subDirectory.Name == PUZZLES_FOLDER_NAME)
+                        {
+                            puzzlesDirectory = subDirectory;
+                            break;
+                        }
+                    }
+                    currentDirectory = currentDirectory.Parent;
+                    if (currentDirectory == null)
+                    {
+                        throw new ApplicationException("couldn't find puzzles directory");
+                    }
+                } while (puzzlesDirectory == null);
+                string zipPath = System.IO.Path.Combine(puzzlesDirectory.ToString(), "sudoku.zip");
+                ZipFile.ExtractToDirectory(zipPath, Environment.CurrentDirectory);
+
+            }
+
+        }
+
+
 
         public static T[][] ToJaggedArray<T>(this IList<T> source, int columnLength)
         {
