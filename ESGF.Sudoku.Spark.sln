@@ -8,7 +8,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Benchmark", "Sudoku.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Puzzles", "Puzzles", "{5351C3A6-44B9-45CB-B4DB-4578796500FB}"
 	ProjectSection(SolutionItems) = preProject
-		Sudoku.NorvigSparkSolver\sudoku.csv = Sudoku.NorvigSparkSolver\sudoku.csv
 		Puzzles\Sudoku_Easy51.txt = Puzzles\Sudoku_Easy51.txt
 		Puzzles\Sudoku_hardest.txt = Puzzles\Sudoku_hardest.txt
 		Puzzles\Sudoku_top95.txt = Puzzles\Sudoku_top95.txt
